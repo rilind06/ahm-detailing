@@ -290,7 +290,7 @@ footer{background:#080808;color:rgba(255,255,255,.45);padding:3.5rem 2rem 1.5rem
 .footer-bot{max-width:1180px;margin:2rem auto 0;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem;font-size:.77rem;color:rgba(255,255,255,.28)}
 
 /* ══ STICKY ══════════════════════════════════════════════ */
-.sticky-wrap{position:fixed;right:1.4rem;bottom:1.8rem;z-index:950;display:flex;flex-direction:column;align-items:flex-end;gap:.65rem}
+.sticky-wrap{position:fixed;right:1.4rem;bottom:1.8rem;z-index:940;display:flex;flex-direction:column;align-items:flex-end;gap:.65rem}
 .s-btn{display:flex;align-items:center;gap:8px;padding:.65rem 1.1rem;border-radius:50px;border:none;cursor:pointer;font-family:'Barlow',sans-serif;font-weight:600;font-size:.83rem;box-shadow:0 4px 22px rgba(0,0,0,.35);transition:transform .25s,background .25s;text-decoration:none;white-space:nowrap}
 .s-btn:hover{transform:translateY(-3px)}
 .s-btn svg{width:20px;height:20px;flex-shrink:0}
@@ -312,17 +312,6 @@ footer{background:#080808;color:rgba(255,255,255,.45);padding:3.5rem 2rem 1.5rem
 @media(max-width:600px){.srv-grid,.price-grid{grid-template-columns:1fr}}
 
 
-/* ── STICKY SOCIALS (round) ────────────────────────── */
-.sticky-socials{display:flex;flex-direction:column;gap:.5rem;align-items:flex-end}
-.s-round{
-  width:44px;height:44px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.35);
-  transition:transform .25s,filter .2s;text-decoration:none;flex-shrink:0;
-}
-.s-round:hover{transform:translateY(-3px) scale(1.1);filter:brightness(1.15)}
-.s-fb{background:#1877F2}
-.s-ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
-.s-tt{background:#010101}
 
 /* ── COOKIE BANNER ─────────────────────────────────── */
 #cookie-block{
@@ -1381,6 +1370,259 @@ h1,h2,h3,p,span,a,li{word-break:break-word;overflow-wrap:break-word}
   .review-btn{width:100%;justify-content:center}
 }
 
+/* ── STAR RATING WIDGET ──────────────────────── */
+.review-stars-display{font-size:1.2rem;color:#FBBC05;letter-spacing:.1em}
+.star-rating{display:flex;gap:.3rem;margin:.8rem auto .5rem;cursor:pointer;justify-content:center}
+.star{
+  font-size:2.4rem;color:#ccc;
+  transition:color .15s,transform .15s;
+  line-height:1;user-select:none;
+  -webkit-text-stroke:1.5px #aaa;
+}
+.star.hovered,.star.selected{color:#FBBC05;-webkit-text-stroke:1.5px #e6a800}
+.star:hover{transform:scale(1.2)}
+.star-label{
+  font-size:.82rem;color:#888;min-height:1.2rem;
+  font-family:'Barlow Condensed',sans-serif;letter-spacing:.05em;
+  text-transform:uppercase;margin-bottom:.5rem;
+  text-align:center;
+}
+/* Feedback form for low ratings */
+.feedback-form{margin-top:.8rem}
+.feedback-title{font-size:.92rem;color:#333;margin-bottom:.6rem;font-weight:600}
+.feedback-textarea{
+  width:100%;border:1.5px solid rgba(0,0,0,.12);border-radius:6px;
+  padding:.75rem;font-family:'Barlow',sans-serif;font-size:.88rem;
+  resize:vertical;min-height:90px;outline:none;
+  transition:border-color .2s;
+}
+.feedback-textarea:focus{border-color:var(--green)}
+.feedback-btn{
+  margin-top:.6rem;
+  display:inline-flex;align-items:center;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:.92rem;letter-spacing:.07em;text-transform:uppercase;
+  background:var(--green);color:#fff;border:none;
+  border-radius:5px;padding:.65rem 1.4rem;cursor:pointer;
+  transition:background .2s;
+}
+.feedback-btn:hover{background:var(--green-mid)}
+.feedback-thanks{
+  margin-top:.6rem;color:var(--green);font-weight:600;
+  font-size:.92rem;display:flex;align-items:center;gap:6px;
+}
+@media(max-width:600px){
+  .star{font-size:2rem}
+}
+
+
+@keyframes sticky-in{from{transform:translateX(-110%)}to{transform:translateX(0)}}
+.google-sticky{
+  position:fixed;bottom:1.8rem;left:1.2rem;z-index:800;
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.95);
+  border:1px solid rgba(0,0,0,.1);
+  border-radius:50px;
+  padding:.5rem 1rem .5rem .65rem;
+  box-shadow:0 4px 18px rgba(0,0,0,.12);
+  text-decoration:none;
+  animation:sticky-in .6s cubic-bezier(.34,1.56,.64,1) 2s both;
+  transition:box-shadow .2s,transform .2s;
+  max-width:260px;
+  backdrop-filter:blur(8px);
+}
+.google-sticky:hover{box-shadow:0 6px 24px rgba(0,0,0,.18);transform:translateY(-2px)}
+.google-sticky-text{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:.78rem;letter-spacing:.03em;color:#333;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.google-sticky-stars{
+  font-size:.85rem;color:#FBBC05;flex-shrink:0;letter-spacing:.05em;
+}
+@media(max-width:480px){
+  .google-sticky{
+    bottom:1.2rem;left:.8rem;
+    padding:.45rem .85rem .45rem .6rem;
+    max-width:220px;
+  }
+  .google-sticky-text{font-size:.72rem}
+}
+
+
+
+50%{box-shadow:2px 0 20px rgba(66,133,244,.4)}}
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:480px){
+  
+  
+}
+
+
+/* ── IPHONE TOGGLE REVIEW BUTTON ─────────────── */
+.review-toggle-wrap{
+  position:fixed;bottom:1.8rem;left:1rem;z-index:960;
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(15,15,15,.92);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:50px;padding:.45rem .8rem;
+  cursor:pointer;
+  box-shadow:0 4px 22px rgba(0,0,0,.35);
+  backdrop-filter:blur(10px);
+  transition:box-shadow .3s,transform .25s;
+  max-width:calc(100vw - 2rem);
+  direction:ltr;
+}
+.review-toggle-wrap:hover{box-shadow:0 6px 28px rgba(0,0,0,.45)}
+.review-toggle-track{
+  width:34px;height:20px;border-radius:10px;
+  background:#3a3a3a;border:1.5px solid rgba(255,255,255,.08);
+  position:relative;flex-shrink:0;
+  transition:background .3s;
+}
+.review-toggle-track.on{background:#34C759;border-color:rgba(52,199,89,.4)}
+.review-toggle-thumb{
+  width:14px;height:14px;border-radius:50%;background:#fff;
+  position:absolute;top:1.5px;left:1.5px;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 2px 6px rgba(0,0,0,.35);
+}
+.review-toggle-track.on .review-toggle-thumb{transform:translateX(14px)}
+.review-toggle-label{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:.75rem;letter-spacing:.05em;
+  color:rgba(255,255,255,.5);
+  display:flex;align-items:center;
+  white-space:nowrap;
+  transition:color .3s;
+  flex-shrink:0;
+}
+.review-toggle-wrap.on .review-toggle-label{color:rgba(255,255,255,.85)}
+.review-toggle-text{
+  overflow:hidden;max-width:0;opacity:0;
+  transition:max-width .5s cubic-bezier(.34,1.2,.64,1),opacity .4s;
+  white-space:nowrap;
+  border-right:1px solid rgba(255,255,255,.1);
+  padding-right:0;
+  direction:ltr;
+}
+.review-toggle-wrap.on .review-toggle-text{
+  max-width:280px;opacity:1;padding-right:9px;
+}
+.review-toggle-link{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:.82rem;letter-spacing:.03em;
+  color:rgba(255,255,255,.85);text-decoration:none;
+  display:flex;align-items:center;gap:5px;
+  transition:color .2s;
+}
+.review-toggle-link:hover{color:#FBBC05}
+.review-toggle-stars{color:#FBBC05;letter-spacing:.05em;font-size:.88rem}
+@media(max-width:480px){
+  .review-toggle-wrap{bottom:1.2rem;left:.7rem}
+  .review-toggle-wrap.on .review-toggle-text{max-width:210px}
+  .review-toggle-link{font-size:.75rem}
+}
+
+
+
+.social-stack-wrap{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.social-stack-icons{
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  overflow:hidden;max-height:0 !important;opacity:0;
+  transition:max-height .4s cubic-bezier(.34,1.2,.64,1),opacity .3s;
+}
+.social-stack-wrap.open .social-stack-icons{max-height:200px !important;opacity:1}
+.s-social-ico{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.4);
+  transition:transform .2s;
+}
+.s-social-ico:hover{transform:scale(1.1)}
+.s-fb{background:#1877F2}
+.s-ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.s-tt{background:#000;border:1.5px solid rgba(255,255,255,.15)}
+.s-social-main{
+  width:46px;height:46px;border-radius:50%;
+  background:#111;border:1.5px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.4);
+  transition:transform .2s;
+}
+.s-social-main:hover{transform:scale(1.08)}
+.social-stack-wrap.open .s-social-main #socialIcon{transform:rotate(45deg);transition:transform .3s}
+#socialIcon{transition:transform .3s}
+
+
+
+.social-stack-wrap{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.social-stack-icons{
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  overflow:hidden;max-height:0 !important;opacity:0;
+  transition:max-height .4s cubic-bezier(.34,1.2,.64,1),opacity .3s;
+}
+.social-stack-wrap.open .social-stack-icons{max-height:200px !important;opacity:1}
+.s-social-ico{
+  width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.4);
+  transition:transform .2s;text-decoration:none;
+  overflow:hidden;
+}
+.s-social-ico:hover{transform:scale(1.1)}
+.s-fb{background:#1877F2}
+.s-ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.s-tt{background:#010101}
+.s-social-main{
+  width:46px;height:46px;border-radius:50%;
+  background:#111;border:1.5px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.4);
+  transition:transform .2s;
+}
+.s-social-main:hover{transform:scale(1.08)}
+#socialIcon{transition:transform .3s}
+.social-stack-wrap.open #socialIcon{transform:rotate(45deg)}
+
+
+/* ── FAN-OUT SOCIAL STICKY ───────────────────── */
+.fan-wrap{position:relative;width:46px;height:46px}
+.fan-main{
+  width:46px;height:46px;border-radius:50%;
+  background:#111;border:1.5px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.4);
+  transition:transform .2s;position:relative;z-index:2;
+}
+.fan-main:hover{transform:scale(1.08)}
+.fan-items{position:absolute;bottom:0;right:0;z-index:1}
+.fan-item{
+  position:absolute;bottom:0;right:0;
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.4);
+  transition:all .4s cubic-bezier(.34,1.56,.64,1);
+  transform:scale(0);opacity:0;text-decoration:none;
+}
+.fan-wrap.open .fan-item:nth-child(1){transform:translateY(-62px) scale(1);opacity:1;transition-delay:.0s}
+.fan-wrap.open .fan-item:nth-child(2){transform:translate(-50px,-42px) scale(1);opacity:1;transition-delay:.05s}
+.fan-wrap.open .fan-item:nth-child(3){transform:translateX(-62px) scale(1);opacity:1;transition-delay:.1s}
+.fan-item:hover{filter:brightness(1.15)}
+.fan-fb{background:#1877F2}
+.fan-ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.fan-tt{background:#000;border:1.5px solid rgba(255,255,255,.15)}
+
 </style>
 </head>
 <body>
@@ -1926,6 +2168,9 @@ h1,h2,h3,p,span,a,li{word-break:break-word;overflow-wrap:break-word}
 </div></section>
 
 
+
+
+
 <!-- BEWERTUNGEN -->
 <section id="bewertungen" style="background:#fff;padding:4rem 2rem">
   <div class="container">
@@ -1936,17 +2181,27 @@ h1,h2,h3,p,span,a,li{word-break:break-word;overflow-wrap:break-word}
           <span>Google</span>
         </div>
         <div class="review-score">5.0</div>
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars-display">★★★★★</div>
         <div class="review-count">Basierend auf Google Bewertungen</div>
       </div>
       <div class="review-divider"></div>
-      <div class="review-right">
-        <div class="review-text">Waren Sie zufrieden mit unserem Service?</div>
-        <div class="review-subtext">Ihre Bewertung hilft uns zu wachsen und anderen Kunden bei der Entscheidung.</div>
-        <a href="https://www.google.com/search?q=rezensionen+f%C3%BCr+ahm+detailing+garage+gmbh+ormalingen&kgmid=%2Fg%2F11xvcylkby" target="_blank" class="review-btn">
-          <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-          Jetzt Bewertung schreiben
-        </a>
+      <div class="review-right" style="text-align:center">
+        <div class="review-text">Wie war Ihre Erfahrung mit uns?</div>
+        <div class="review-subtext">Tippen Sie auf die Sterne um uns zu bewerten.</div>
+        <div class="star-rating" id="starRating">
+          <span class="star" data-value="1">☆</span>
+          <span class="star" data-value="2">☆</span>
+          <span class="star" data-value="3">☆</span>
+          <span class="star" data-value="4">☆</span>
+          <span class="star" data-value="5">☆</span>
+        </div>
+        <div class="star-label" id="starLabel"></div>
+        <div class="feedback-form" id="feedbackForm" style="display:none">
+          <p class="feedback-title">Was können wir besser machen?</p>
+          <textarea class="feedback-textarea" id="feedbackText" placeholder="Ihr Feedback hilft uns sehr..."></textarea>
+          <button class="feedback-btn" onclick="sendFeedback()">Feedback senden</button>
+          <div class="feedback-thanks" id="feedbackThanks" style="display:none">✓ Vielen Dank für Ihr Feedback!</div>
+        </div>
       </div>
     </div>
   </div>
@@ -2031,17 +2286,24 @@ h1,h2,h3,p,span,a,li{word-break:break-word;overflow-wrap:break-word}
 
 <!-- STICKY -->
 <div class="sticky-wrap">
-  <!-- Round social icons -->
-  <div class="sticky-socials">
-    <a href="https://www.facebook.com/people/Ahm-Detailing-Garage/pfbid0KHKoHpDdqxx2kfL3vD9L2uQ6g1gwUi7oSUcpZTHuaa1TFexV592QV9owfCXxqgTFl/" target="_blank" class="s-round s-fb" title="Facebook">
-      <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-    </a>
-    <a href="https://www.instagram.com/ahmdetailinggarage/" target="_blank" class="s-round s-ig" title="Instagram">
-      <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    </a>
-    <a href="https://www.tiktok.com/@ahmdetailinggarage" target="_blank" class="s-round s-tt" title="TikTok">
-      <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-    </a>
+  <!-- Fan-out Social Button -->
+  <div class="fan-wrap" id="fanWrap">
+    <div class="fan-items">
+      <a href="https://www.facebook.com/people/Ahm-Detailing-Garage/pfbid0KHKoHpDdqxx2kfL3vD9L2uQ6g1gwUi7oSUcpZTHuaa1TFexV592QV9owfCXxqgTFl/" target="_blank" class="fan-item fan-fb">
+        <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/ahmdetailinggarage/" target="_blank" class="fan-item fan-ig">
+        <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@ahmdetailinggarage" target="_blank" class="fan-item fan-tt">
+        <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.73a8.27 8.27 0 004.83 1.55V6.84a4.85 4.85 0 01-1.06-.15z"/></svg>
+      </a>
+    </div>
+    <button class="fan-main" onclick="toggleFan()" aria-label="Social Media">
+      <svg id="fanIcon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" width="20" height="20" style="transition:transform .3s">
+        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+    </button>
   </div>
   <!-- Action buttons -->
   <button class="s-btn s-green" onclick="togglePP()">
@@ -2093,6 +2355,59 @@ window.addEventListener('scroll',function(){
 </script>
 
 <script>
+
+
+
+
+
+window.addEventListener('scroll', function(){
+  var fw=document.getElementById('fanWrap'); if(fw){fw.classList.remove('open'); var fi=document.getElementById('fanIcon'); if(fi) fi.style.transform='rotate(0deg)';}
+},{passive:true});
+
+function toggleFan(){
+  var wrap = document.getElementById('fanWrap');
+  var icon = document.getElementById('fanIcon');
+  wrap.classList.toggle('open');
+  icon.style.transform = wrap.classList.contains('open') ? 'rotate(45deg)' : 'rotate(0deg)';
+}
+/* ── IPHONE TOGGLE REVIEW ── */
+var reviewToggleOn = false;
+function toggleReview(){
+  reviewToggleOn = !reviewToggleOn;
+  var wrap = document.getElementById('reviewToggle');
+  var track = document.getElementById('reviewTrack');
+  var text = document.getElementById('reviewToggleText');
+  if(!wrap||!track||!text) return;
+  wrap.classList.toggle('on', reviewToggleOn);
+  track.classList.toggle('on', reviewToggleOn);
+  if(reviewToggleOn){
+    text.style.maxWidth='280px';
+    text.style.opacity='1';
+    text.style.paddingLeft='9px';
+  } else {
+    text.style.maxWidth='0';
+    text.style.opacity='0';
+    text.style.paddingLeft='0';
+  }
+}
+function closeReviewToggle(){
+  if(!reviewToggleOn) return;
+  reviewToggleOn = false;
+  var wrap = document.getElementById('reviewToggle');
+  var track = document.getElementById('reviewTrack');
+  var text = document.getElementById('reviewToggleText');
+  if(!wrap||!track||!text) return;
+  wrap.classList.remove('on');
+  track.classList.remove('on');
+  text.style.maxWidth='0';
+  text.style.opacity='0';
+  text.style.paddingLeft='0';
+}
+// Close on scroll
+window.addEventListener('scroll', function(){
+  if(reviewToggleOn) closeReviewToggle();
+},{passive:true});
+
 /* ── PROMO POPUP ── */
 function showPromoPopup(){
   var el = document.getElementById('promo-overlay');
@@ -2105,7 +2420,6 @@ function closePromo(){
   if(!el) return;
   el.classList.remove('open');
   setTimeout(function(){ el.style.display = 'none'; }, 400);
-  sessionStorage.setItem('ahm_promo_seen','1');
 }
 document.addEventListener('click', function(e){
   var o = document.getElementById('promo-overlay');
@@ -2114,7 +2428,6 @@ document.addEventListener('click', function(e){
 
 /* Auto-show promo once per session, after cookie decision (or after delay if already decided) */
 (function(){
-  if(sessionStorage.getItem('ahm_promo_seen')) return;
   var hasCookie = localStorage.getItem('ahm_cookie_consent');
   var delay = hasCookie ? 1800 : 99999; /* if no cookie yet, setCookieConsent will call it */
   if(hasCookie){
@@ -2143,7 +2456,7 @@ function setCookieConsent(type){
     document.getElementById('cookie-banner').classList.remove('visible');
   },400);
   setTimeout(function(){
-    if(!sessionStorage.getItem('ahm_promo_seen')) showPromoPopup();
+    showPromoPopup();
   },1200);
 }
 
@@ -2435,6 +2748,101 @@ function switchTab(btn,id){
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape'){closePreisliste();closeLegalBtn();}
 });
+
+/* ── STAR RATING ─────────────────────────────── */
+(function(){
+  var stars = document.querySelectorAll('.star');
+  var label = document.getElementById('starLabel');
+  var feedbackForm = document.getElementById('feedbackForm');
+  var labels = ['','Sehr schlecht','Verbesserungswürdig','In Ordnung','Gut','Ausgezeichnet!'];
+  var googleUrl = 'https://share.google/7AwyogK29P5GrRY94';
+
+  if(!stars.length) return;
+
+  function setStars(n, cls){
+    stars.forEach(function(s,i){
+      s.textContent = i < n ? '\u2605' : '\u2606';
+      s.classList.toggle(cls, i < n);
+    });
+  }
+
+  stars.forEach(function(star){
+    star.addEventListener('mouseover', function(){
+      var n = parseInt(this.dataset.value);
+      label.textContent = labels[n];
+      stars.forEach(function(s){ s.classList.remove('hovered'); });
+      setStars(n, 'hovered');
+    });
+    star.addEventListener('mouseout', function(){
+      stars.forEach(function(s){ s.classList.remove('hovered'); });
+      var sel = document.querySelector('.star.selected');
+      if(!sel){ stars.forEach(function(s){ s.textContent='\u2606'; }); label.textContent=''; }
+      else {
+        var n = parseInt(sel.dataset.value);
+        label.textContent = labels[n];
+        setStars(n,'selected');
+      }
+    });
+    star.addEventListener('click', function(){
+      var n = parseInt(this.dataset.value);
+      stars.forEach(function(s){ s.classList.remove('selected','hovered'); s.textContent='\u2606'; });
+      setStars(n,'selected');
+      label.textContent = labels[n];
+      if(n >= 4){
+        feedbackForm.style.display = 'none';
+        setTimeout(function(){ window.open(googleUrl,'_blank'); }, 400);
+      } else {
+        feedbackForm.style.display = 'block';
+        document.getElementById('feedbackThanks').style.display = 'none';
+        document.getElementById('feedbackText').value = '';
+        document.getElementById('feedbackText').style.display = 'block';
+        var btn = document.querySelector('.feedback-btn');
+        var title = document.querySelector('.feedback-title');
+        if(btn) btn.style.display = 'inline-flex';
+        if(title) title.style.display = 'block';
+      }
+    });
+  });
+})();
+
+function sendFeedback(){
+  var text = document.getElementById('feedbackText').value.trim();
+  if(!text){ document.getElementById('feedbackText').style.borderColor='#e74c3c'; return; }
+  var selectedStar = document.querySelectorAll('.star.selected').length;
+  var stars = '★'.repeat(selectedStar) + '☆'.repeat(5 - selectedStar);
+  var msg = '⚠️ Negatives Kundenfeedback%0A%0A'
+    + 'Bewertung%3A ' + stars + ' (' + selectedStar + ' von 5 Sternen)%0A%0A'
+    + 'Kommentar%3A%0A' + encodeURIComponent(text);
+  window.open('https://wa.me/41798994466?text=' + msg, '_blank');
+  document.getElementById('feedbackThanks').style.display = 'flex';
+  document.getElementById('feedbackText').style.display = 'none';
+  var btn = document.querySelector('.feedback-btn');
+  var title = document.querySelector('.feedback-title');
+  if(btn) btn.style.display = 'none';
+  if(title) title.style.display = 'none';
+}
+
 </script>
+
+
+
+  <div class="review-sidebar-content">
+    
+<!-- iPhone Toggle Review Button -->
+<div class="review-toggle-wrap" id="reviewToggle" onclick="toggleReview()">
+  <div class="review-toggle-track" id="reviewTrack">
+    <div class="review-toggle-thumb"></div>
+  </div>
+  <span class="review-toggle-label">
+    <svg viewBox="0 0 24 24" width="14" height="14" style="flex-shrink:0;margin-right:3px"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+    5,0 <span style="color:#FBBC05">★</span>
+  </span>
+  <div class="review-toggle-text" id="reviewToggleText">
+    <a href="https://share.google/7AwyogK29P5GrRY94" target="_blank" onclick="event.stopPropagation();window.open('https://share.google/7AwyogK29P5GrRY94','_blank');return false;" class="review-toggle-link">
+      Begeistert? Schenk uns 5 Sterne! <span style="opacity:.6;font-size:.8rem">→</span>
+    </a>
+  </div>
+</div>
+
 </body>
 </html>
