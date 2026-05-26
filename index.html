@@ -100,7 +100,7 @@ a{text-decoration:none}
   box-shadow:0 4px 20px rgba(0,0,0,.4);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
 }
-nav{display:flex;align-items:center;gap:.1rem;overflow-x:auto;max-width:calc(100vw - 300px)}
+nav{display:none}
 .ni{position:relative}
 .nl{display:flex;align-items:center;gap:4px;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.92rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.82);padding:.48rem .85rem;border-radius:3px;transition:color .2s,background .2s;cursor:pointer}
 .nl:hover,.nl.act{color:#fff;background:rgba(255,255,255,.07)}
@@ -136,7 +136,7 @@ nav{display:flex;align-items:center;gap:.1rem;overflow-x:auto;max-width:calc(100
 
 
 .mob-btn{
-  display:none;flex-direction:column;align-items:center;justify-content:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:5px;background:none;border:none;cursor:pointer;
   padding:.5rem;position:relative;z-index:1200;
 }
@@ -155,7 +155,7 @@ nav{display:flex;align-items:center;gap:.1rem;overflow-x:auto;max-width:calc(100
 .mob-nav a.sub{padding-left:3.5rem;font-size:.9rem;opacity:.7}
 .mob-nav a:hover{color:#fff;background:rgba(255,255,255,.04)}
 .mob-nav .mob-wa{margin:1rem 2rem 0;background:var(--green);color:white;border-radius:4px;text-align:center;border:none;display:block}
-@media(max-width:960px){nav,.hcta{position:relative;display:none}.mob-btn{display:flex!important}
+@media(max-width:960px){nav,.hcta{position:relative;display:none}
 
 
 
